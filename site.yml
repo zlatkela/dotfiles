@@ -1,0 +1,149 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    homebrew_services:
+      - memcached
+      - mysql
+      - rabbitmq
+      - redis
+
+  tasks:
+
+    - name: install taps
+      homebrew_tap: tap={{ item }} state=present
+      with_items:
+        - caskroom/cask
+        - homebrew/php
+        - argon/mas
+
+    - name: install brews
+      homebrew: name={{ item }} state=present
+      ignore_errors: yes
+      with_items:
+        - composer
+        - docker
+        - docker-compose
+        - git
+        - python
+        - mas
+        - memcached
+        - mysql
+        - node
+        - rabbitmq
+        - rbenv
+        - redis
+        - wget
+
+    - name: get installed apps from app store
+      command: mas list
+      register: mas_result
+      always_run: yes
+      changed_when: false
+
+    - name: install apps from app store
+      command: mas install {{ item }}
+      when: '"{{ item }}" not in "{{ mas_result|default() }}"'
+      with_items:
+        - 506189836 # Harvest
+        - 413965349 # Soulver
+        - 889428659 # xScope
+        - 584653203 # Paw
+        - 449589707 # Dash
+        - 803453959 # Slack
+        - 603117688 # CCMenu
+        - 969418666 # ColorSnapper2
+        - 443987910 # 1Password
+        - 775737590 # iA Writer
+        - 411643860 # DaisyDisk
+        - 497799835 # Xcode
+        - 546392952 # Prizmo
+        - 924726344 # Deliveries
+        - 975937182 # Fantastical 2
+        - 407963104 # Pixelmator
+        - 955848755 # Theine
+        - 406056744 # Evernote
+
+    - name: create user launchd directory
+      file: path=~/Library/LaunchAgents state=directory recurse=yes
+
+    - name: add launchd links
+      file: path=~/Library/LaunchAgents/homebrew.mxcl.{{ item }}.plist src=/usr/local/opt/{{ item }}/homebrew.mxcl.{{ item }}.plist state=link force=yes
+      with_items: "{{ homebrew_services }}"
+
+    - name: check launchd
+      shell: launchctl list
+      register: launchd_result
+      changed_when: false
+
+    - name: load launchd links
+      command: launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.{{ item }}.plist
+      when: '"{{ item }}" not in "{{ launchd_result }}"'
+      with_items: "{{ homebrew_services }}"
+
+    - name: install casks
+      homebrew_cask: name={{ item }} state=present
+      ignore_errors: yes
+      with_items:
+        - alfred
+        - arq
+        - atom
+        - eclipse-platform
+        - google-chrome
+        - google-drive
+        - dropbox
+        - firefox
+        - sequel-pro
+        - skype
+        - textmate
+        - tower
+        - transmit
+        - vagrant
+        - vlc
+
+    - name: install pip packages
+      pip: name={{ item }} state=present
+      with_items:
+        - mysqlclient
+        - python-memcached
+        - virtualenv
+
+    - name: install npm packages
+      npm: name={{ item }} global=yes state=present
+      with_items:
+        - bower
+
+    - name: copy dotfiles
+      copy: src={{ item }} dest=~/{{ item }}
+      with_items:
+        - .aliases
+        - .bash_profile
+        - .bashrc
+        - .exports
+        - .gitconfig
+        - .gitignore
+        - .inputrc
+        - .screenrc
+
+    - name: get current Terminal profile
+      shell: defaults read com.apple.Terminal 'Default Window Settings'
+      register: terminal_theme
+      changed_when: false
+
+    - name: download Terminal profile
+      get_url: url=https://raw.githubusercontent.com/pstadler/optometrist/master/Optometrist.terminal dest=Optometrist.terminal
+      when: "'Optometrist' not in terminal_theme.stdout"
+
+    - name: ensure custom Terminal profile is added
+      shell: open Optometrist.terminal
+      changed_when: false
+      when: "'Optometrist' not in terminal_theme.stdout"
+
+    - name: ensure custom Terminal profile is set as default
+      shell: defaults write com.apple.Terminal '{{ item }}' -string 'Optometrist'
+      with_items:
+        - Default Window Settings
+        - Startup Window Settings
+      changed_when: false
+      when: "'Optometrist' not in terminal_theme.stdout"

@@ -2,18 +2,12 @@
 
 ## Installation
 
-```bash
-git clone https://github.com/fabian/dotfiles.git ~/.dotfiles && cd ~/dotfiles && source bootstrap.sh
-```
-
-To update, `cd` into your local `dotfiles` repository and then:
+Make sure to install [Homebrew](http://brew.sh) first with the instructions from their website.
 
 ```bash
-source bootstrap.sh
-```
-
-Alternatively, to update while avoiding the confirmation prompt:
-
-```bash
-set -- -f; source bootstrap.sh
+brew install python
+pip install ansible
+git clone https://github.com/fabian/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+ansible-playbook site.yml
 ```
