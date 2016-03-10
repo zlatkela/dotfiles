@@ -38,13 +38,14 @@
 
     - name: get installed apps from app store
       command: mas list
+      when: ansible_distribution_version|version_compare(10.11, '>=')
       register: mas_result
       always_run: yes
       changed_when: false
 
     - name: install apps from app store
       command: mas install {{ item }}
-      when: '"{{ item }}" not in "{{ mas_result|default() }}"'
+      when: not mas_result.skipped|default(false) and "{{ item }}" not in mas_result.stdout
       with_items:
         - 506189836 # Harvest
         - 413965349 # Soulver
