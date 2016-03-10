@@ -77,11 +77,12 @@
     - name: check launchd
       shell: launchctl list
       register: launchd_result
+      always_run: yes
       changed_when: false
 
     - name: load launchd links
       command: launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.{{ item }}.plist
-      when: '"{{ item }}" not in "{{ launchd_result }}"'
+      when: item not in launchd_result.stdout
       with_items: "{{ homebrew_services }}"
 
     - name: install casks
