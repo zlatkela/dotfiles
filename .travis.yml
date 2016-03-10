@@ -7,5 +7,3 @@ before_install:
 script:
   - ansible-playbook site.yml --syntax-check
   - ansible-playbook site.yml
-  - mas list
-  - ls -la ~
