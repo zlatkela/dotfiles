@@ -6,4 +6,4 @@ before_install:
   - pip install ansible
 script:
   - ansible-playbook site.yml --syntax-check
-  - ansible-playbook site.yml
+  - ansible-playbook site.yml --check
