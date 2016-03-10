@@ -1,6 +1,8 @@
 
 export PATH="./node_modules/.bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Make nano the default editor.
 export EDITOR='nano';
 
