@@ -6,7 +6,7 @@ Make sure to install [Homebrew](http://brew.sh) first with the instructions from
 
 ```bash
 brew install python
-pip install ansible
+sudo pip install ansible
 git clone https://github.com/fabian/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ansible-playbook site.yml
