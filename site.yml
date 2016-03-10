@@ -131,13 +131,13 @@
       changed_when: false
 
     - name: download Terminal profile
-      get_url: url=https://raw.githubusercontent.com/pstadler/optometrist/master/Optometrist.terminal dest=Optometrist.terminal
-      when: "'Optometrist' not in terminal_theme.stdout"
+      get_url: url=https://raw.githubusercontent.com/pstadler/optometrist/master/Optometrist.terminal dest=./Optometrist.terminal
+      when: terminal_theme.stdout != "Optometrist"
 
     - name: ensure custom Terminal profile is added
       shell: open Optometrist.terminal
       changed_when: false
-      when: "'Optometrist' not in terminal_theme.stdout"
+      when: terminal_theme.stdout != "Optometrist"
 
     - name: ensure custom Terminal profile is set as default
       shell: defaults write com.apple.Terminal '{{ item }}' -string 'Optometrist'
@@ -145,4 +145,4 @@
         - Default Window Settings
         - Startup Window Settings
       changed_when: false
-      when: "'Optometrist' not in terminal_theme.stdout"
+      when: terminal_theme.stdout != "Optometrist"
