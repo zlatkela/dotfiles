@@ -22,7 +22,6 @@
       homebrew: name={{ item }} state=present
       ignore_errors: yes
       with_items:
-        - bower
         - composer
         - docker
         - docker-compose
@@ -111,6 +110,11 @@
         - mysqlclient
         - python-memcached
         - virtualenv
+
+    - name: install npm packages
+      npm: name={{ item }} global=yes state=present
+      with_items:
+        - bower
 
     - name: copy dotfiles
       copy: src={{ item }} dest=~/{{ item }}
