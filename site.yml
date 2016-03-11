@@ -112,6 +112,7 @@
     - name: install pip packages
       pip: name={{ item }} state=present
       with_items:
+        - ansible
         - mysqlclient
         - python-memcached
         - virtualenv
