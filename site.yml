@@ -65,6 +65,7 @@
         - 407963104 # Pixelmator
         - 955848755 # Theine
         - 406056744 # Evernote
+        - 512533449 # Slicy
 
     - name: create user launchd directory
       file: path=~/Library/LaunchAgents state=directory recurse=yes
