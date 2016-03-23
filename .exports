@@ -1,5 +1,5 @@
 
-export PATH="./node_modules/.bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="./node_modules/.bin:/usr/local/bin:/opt/local/bin:/usr/local/sbin:/opt/local/sbin:$PATH"
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
