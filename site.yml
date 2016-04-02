@@ -135,6 +135,14 @@
         - .inputrc
         - .screenrc
 
+    - name: create atom directory
+      file: path=~/.atom state=directory recurse=yes
+
+    - name: copy atom config
+      copy: src=.atom/{{ item }} dest=~/.atom/{{ item }}
+      with_items:
+        - config.cson
+
     - name: get current Terminal profile
       shell: defaults read com.apple.Terminal 'Default Window Settings'
       register: terminal_theme
