@@ -1,0 +1,93 @@
+---
+- name: install taps
+  homebrew_tap: tap={{ item }} state=present
+  with_items:
+    - caskroom/cask
+    - argon/mas
+
+- name: install brews
+  homebrew: name={{ item }} state=present
+  ignore_errors: yes
+  with_items:
+    - docker
+    - docker-compose
+    - git
+    - python
+    - mas
+    - memcached
+    - mysql
+    - node
+    - rabbitmq
+    - rbenv
+    - redis
+    - wget
+
+- name: get installed apps from app store
+  command: mas list
+  when: ansible_distribution_version|version_compare(10.11, '>=')
+  register: mas_result
+  always_run: yes
+  changed_when: false
+
+- name: install apps from app store
+  command: mas install {{ item }}
+  ignore_errors: yes
+  when: not mas_result.skipped|default(false) and "{{ item }}" not in mas_result.stdout
+  with_items:
+    - 506189836 # Harvest
+    - 413965349 # Soulver
+    - 889428659 # xScope
+    - 584653203 # Paw
+    - 449589707 # Dash
+    - 803453959 # Slack
+    - 603117688 # CCMenu
+    - 969418666 # ColorSnapper2
+    - 443987910 # 1Password
+    - 775737590 # iA Writer
+    - 411643860 # DaisyDisk
+    - 497799835 # Xcode
+    - 546392952 # Prizmo
+    - 924726344 # Deliveries
+    - 975937182 # Fantastical 2
+    - 407963104 # Pixelmator
+    - 955848755 # Theine
+    - 406056744 # Evernote
+    - 512533449 # Slicy
+
+- name: install casks
+  homebrew_cask: name={{ item }} state=present
+  ignore_errors: yes
+  with_items:
+    - alfred
+    - arq
+    - atom
+    - charles
+    - crashplan
+    - eclipse-platform
+    - google-chrome
+    - google-drive
+    - dropbox
+    - firefox
+    - kaleidoscope
+    - sequel-pro
+    - sketch
+    - skype
+    - textmate
+    - things
+    - tower
+    - transmit
+    - vagrant
+    - vlc
+
+- name: install pip packages
+  pip: name={{ item }} state=present
+  with_items:
+    - ansible
+    - mysqlclient
+    - python-memcached
+    - virtualenv
+
+- name: install npm packages
+  npm: name={{ item }} global=yes state=present
+  with_items:
+    - bower

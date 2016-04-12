@@ -1,0 +1,6 @@
+---
+homebrew_services:
+  - memcached
+  - mysql
+  - rabbitmq
+  - redis

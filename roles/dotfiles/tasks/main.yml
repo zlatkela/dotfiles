@@ -1,0 +1,12 @@
+---
+- name: copy dotfiles
+  copy: src={{ item }} dest=~/{{ item }}
+  with_items:
+    - .aliases
+    - .bash_profile
+    - .bashrc
+    - .exports
+    - .gitconfig
+    - .gitignore
+    - .inputrc
+    - .screenrc
