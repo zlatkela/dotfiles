@@ -24,5 +24,4 @@
 
 - name: run .osx commands
   script: .osx
-  become: yes
   changed_when: false
