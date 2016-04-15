@@ -1,0 +1,4 @@
+---
+virtualhosts:
+  - servername: foobar.dev
+    documentroot: /Users/peter/Workspace/foobar

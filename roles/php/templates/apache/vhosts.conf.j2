@@ -1,0 +1,18 @@
+<Virtualhost *:80>
+    ServerName localhost
+</Virtualhost>
+
+{% for vhost in virtualhosts %}  
+
+<Virtualhost *:80>
+
+    ServerName {{ vhost.servername }}
+    DocumentRoot {{ vhost.documentroot }}
+
+    <Directory "{{ vhost.documentroot }}">
+        AllowOverride All
+    </Directory>
+
+</Virtualhost>
+
+{% endfor %}

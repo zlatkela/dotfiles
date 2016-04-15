@@ -14,3 +14,4 @@ Thumbs.db
 .Trashes
 
 /Optometrist.terminal
+/host_vars/localhost.yml
