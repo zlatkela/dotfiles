@@ -59,6 +59,7 @@
   ignore_errors: yes
   with_items:
     - alfred
+    - appzapper
     - arq
     - atom
     - charles
