@@ -10,10 +10,10 @@
   homebrew: name={{ item }} state=present
   ignore_errors: yes
   with_items:
-    - composer
     - php56
     - php56-intl
     - php56-xdebug
+    - composer
   notify: restart apache
 
 - name: configure Apache
