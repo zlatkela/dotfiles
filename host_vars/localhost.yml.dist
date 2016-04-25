@@ -1,4 +1,9 @@
 ---
+ssh_hosts:
+  - nickname: foobar
+    hostname: foobar.example.org
+    user: max
+    forward_agent: yes
 virtualhosts:
   - servername: foobar.dev
     documentroot: /Users/peter/Workspace/foobar

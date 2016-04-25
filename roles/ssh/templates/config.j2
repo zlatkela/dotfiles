@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+
+{% for host in ssh_hosts %}
+
+Host {{ host.nickname | default(host.hostname) }}
+    Hostname {{ host.hostname }}
+    User {{ host.user | default(lookup('env', 'USER')) }}
+    ForwardAgent {% if host.forward_agent | default(False) %}yes{% else %}no{% endif %}
+
+{% endfor %}
