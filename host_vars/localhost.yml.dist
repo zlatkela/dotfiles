@@ -1,4 +1,6 @@
 ---
+git_user_name: Max Muster
+git_user_email: max.muster@example.org
 ssh_hosts:
   - nickname: foobar
     hostname: foobar.example.org
