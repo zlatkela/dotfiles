@@ -1,3 +1,5 @@
+# {{ ansible_managed }}
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
