@@ -53,6 +53,7 @@
     - 955848755 # Theine
     - 406056744 # Evernote
     - 512533449 # Slicy
+    - 414957465 # Twitterrific
 
 - name: install casks
   homebrew_cask: name={{ item }} state=present
