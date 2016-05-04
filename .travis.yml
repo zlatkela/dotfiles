@@ -3,10 +3,10 @@ language: objective-c
 cache:
   directories:
     - /Library/Caches/Homebrew
-    - /opt/homebrew-cask/Caskroom/
     - $HOME/.cache/pip
 
 before_install:
+  - brew --cache
   - brew update
   - brew install ansible
 
