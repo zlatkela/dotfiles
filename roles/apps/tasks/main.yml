@@ -9,8 +9,6 @@
   homebrew: name={{ item }} state=present
   ignore_errors: yes
   with_items:
-    - docker
-    - docker-compose
     - git
     - python
     - mas
