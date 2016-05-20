@@ -9,6 +9,9 @@
 <Virtualhost *:80>
 
     ServerName {{ vhost.servername }}
+    {% if vhost.serveralias is defined %}
+        ServerAlias {{ vhost.serveralias }}
+    {% endif %}
     DocumentRoot {{ vhost.documentroot }}
 
     <Directory "{{ vhost.documentroot }}">

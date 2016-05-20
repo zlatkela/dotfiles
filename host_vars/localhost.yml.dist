@@ -8,4 +8,5 @@ ssh_hosts:
     forward_agent: yes
 virtualhosts:
   - servername: foobar.dev
+    serveralias: foobar.lo
     documentroot: /Users/peter/Workspace/foobar
