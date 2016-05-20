@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # {{ ansible_managed }}
 
 # Easier navigation: .., ..., ...., ....., ~ and -
