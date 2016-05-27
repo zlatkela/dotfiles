@@ -22,7 +22,7 @@
 
 - name: get installed apps from app store
   command: mas list
-  when: ansible_distribution_version|version_compare(10.11, '>=')
+  when: not lookup("env", "CI")
   register: mas_result
   always_run: yes
   changed_when: false
@@ -58,6 +58,7 @@
 
 - name: install casks
   homebrew_cask: name={{ item }} state=present
+  when: not lookup("env", "CI")
   ignore_errors: yes
   with_items:
     - alfred
