@@ -15,5 +15,5 @@ script:
   - ansible-playbook site.yml --syntax-check
   - ansible-playbook site.yml --diff -vvv
 
-after_script:
+before_cache:
   - brew cleanup
