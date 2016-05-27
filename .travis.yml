@@ -13,4 +13,4 @@ before_install:
 
 script:
   - ansible-playbook site.yml --syntax-check
-  - ansible-playbook site.yml -vvv
+  - ansible-playbook site.yml --diff -vvv
