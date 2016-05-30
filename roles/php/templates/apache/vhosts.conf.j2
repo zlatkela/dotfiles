@@ -5,13 +5,12 @@
 </Virtualhost>
 
 {% for vhost in virtualhosts %}  
-
 <Virtualhost *:80>
 
     ServerName {{ vhost.servername }}
-    {% if vhost.serveralias is defined %}
-        ServerAlias {{ vhost.serveralias }}
-    {% endif %}
+{% if vhost.serveralias is defined %}
+    ServerAlias {{ vhost.serveralias }}
+{% endif %}
 
     DocumentRoot {{ vhost.documentroot }}
 
@@ -20,5 +19,4 @@
     </Directory>
 
 </Virtualhost>
-
 {% endfor %}
