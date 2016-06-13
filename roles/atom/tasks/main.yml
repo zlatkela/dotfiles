@@ -4,3 +4,5 @@
 
 - name: copy atom config
   template: src=config.cson.j2 dest=~/.atom/config.cson
+  tags:
+     - configuration
