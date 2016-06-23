@@ -5,7 +5,7 @@ rvm: system
 
 cache:
   directories:
-    - /Library/Caches/Homebrew
+    - $HOME/Library/Caches/Homebrew
     - $HOME/.cache/pip
 
 before_install:
