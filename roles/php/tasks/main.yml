@@ -7,7 +7,7 @@
     - homebrew/versions
 
 - name: install brews
-  homebrew: name={{ item }} state=present
+  homebrew: name={{ item }} state=present install_options=with-apache
   ignore_errors: yes
   with_items:
     - php56
