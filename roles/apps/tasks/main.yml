@@ -35,7 +35,6 @@
     - 506189836 # Harvest
     - 413965349 # Soulver
     - 889428659 # xScope
-    - 449589707 # Dash
     - 803453959 # Slack
     - 603117688 # CCMenu
     - 969418666 # ColorSnapper2
@@ -66,6 +65,7 @@
     - atom
     - charles
     - crashplan
+    - dash
     - docker
     - eclipse-jee
     - google-chrome
