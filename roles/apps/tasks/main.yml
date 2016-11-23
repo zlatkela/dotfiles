@@ -37,21 +37,15 @@
   with_items:
     - 506189836 # Harvest
     - 413965349 # Soulver
-    - 889428659 # xScope
+    - 587512244 # Kaleidoscope
     - 603117688 # CCMenu
-    - 969418666 # ColorSnapper2
-    - 443987910 # 1Password
     - 775737590 # iA Writer
     - 411643860 # DaisyDisk
     - 497799835 # Xcode
-    - 546392952 # Prizmo
     - 924726344 # Deliveries
     - 975937182 # Fantastical 2
     - 407963104 # Pixelmator
-    - 955848755 # Theine
-    - 406056744 # Evernote
-    - 512533449 # Slicy
-    - 414957465 # Twitterrific
+    - 557168941 # Tweetbot
     - 409183694 # Keynote
     - 409201541 # Pages
     - 409203825 # Numbers
@@ -63,16 +57,13 @@
   with_items:
     - alfred
     - appzapper
-    - arq
     - atom
     - charles
-    - crashplan
     - dash
     - docker
-    - eclipse-jee
     - google-chrome
+    - google-chrome-canary
     - google-drive
-    - dropbox
     - firefox
     - java
     - kaleidoscope
@@ -83,14 +74,14 @@
     - sketch
     - skype
     - textmate
-    - things
-    - tower
+    - sourcetree
     - transmit
-    - vagrant
     - vlc
     - sts
     - webstorm
     - slack-beta
+    - caffeine
+    - android-studio
 
 - name: install pip packages
   pip: name={{ item }} state=present
