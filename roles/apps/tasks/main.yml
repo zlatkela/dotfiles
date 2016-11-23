@@ -19,6 +19,9 @@
     - rbenv
     - redis
     - wget
+    - cf-cli
+    - liquibase
+    - mongodb
 
 - name: get installed apps from app store
   command: mas list
