@@ -23,6 +23,7 @@
     - cf-cli
     - liquibase
     - mongodb
+    - maven
 
 - name: get installed apps from app store
   command: mas list
