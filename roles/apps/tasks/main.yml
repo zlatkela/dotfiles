@@ -35,7 +35,6 @@
     - 506189836 # Harvest
     - 413965349 # Soulver
     - 889428659 # xScope
-    - 803453959 # Slack
     - 603117688 # CCMenu
     - 969418666 # ColorSnapper2
     - 443987910 # 1Password
@@ -88,6 +87,7 @@
     - vlc
     - sts
     - webstorm
+    - slack-beta
 
 - name: install pip packages
   pip: name={{ item }} state=present
