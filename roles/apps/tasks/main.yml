@@ -86,6 +86,8 @@
     - transmit
     - vagrant
     - vlc
+    - sts
+    - webstorm
 
 - name: install pip packages
   pip: name={{ item }} state=present
