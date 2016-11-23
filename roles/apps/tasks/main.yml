@@ -4,6 +4,7 @@
   with_items:
     - caskroom/cask
     - argon/mas
+    - cloudfoundry/tap
 
 - name: install brews
   homebrew: name={{ item }} state=present
