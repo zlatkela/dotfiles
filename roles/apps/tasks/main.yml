@@ -29,7 +29,8 @@
   command: mas list
   when: not lookup("env", "CI")
   register: mas_result
-  always_run: yes
+  # always_run: yes - deprecated, use check_mode=no instead
+  check_mode: no
   changed_when: false
 
 - name: install apps from app store
@@ -58,14 +59,11 @@
   ignore_errors: yes
   with_items:
     - alfred
-    - appzapper
     - atom
     - charles
     - dash
     - docker
     - google-chrome
-    - google-chrome-canary
-    - google-drive
     - firefox
     - java
     - kaleidoscope
