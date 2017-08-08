@@ -9,7 +9,8 @@
 - name: check launchd
   shell: launchctl list
   register: launchd_result
-  always_run: yes
+  # always_run: yes - deprecated, use check_mode=no instead
+  check_mode: no
   changed_when: false
 
 - name: load launchd links
