@@ -1,12 +1,13 @@
 ---
 git_user_name: Max Muster
 git_user_email: max.muster@example.org
-ssh_hosts:
-  - nickname: foobar
-    hostname: foobar.example.org
-    user: max
-    forward_agent: yes
-virtualhosts:
-  - servername: foobar.dev
-    serveralias: foobar.lo
-    documentroot: /Users/peter/Workspace/foobar
+# below is usually not used
+#ssh_hosts:
+#  - nickname: foobar
+#    hostname: foobar.example.org
+#    user: max
+#    forward_agent: yes
+#virtualhosts:
+#  - servername: foobar.dev
+#    serveralias: foobar.lo
+#    documentroot: /Users/peter/Workspace/foobar
