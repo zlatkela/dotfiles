@@ -5,6 +5,17 @@
     - caskroom/cask
     - argon/mas
     - cloudfoundry/tap
+    # for older java versions
+    - caskroom/versions
+
+- name: install prerequisite casks
+  homebrew_cask: name={{ item }} state=present
+  when: not lookup("env", "CI")
+  ignore_errors: yes
+  with_items:
+    # for maven
+    - java
+    - java8
 
 - name: install brews
   homebrew: name={{ item }} state=present
