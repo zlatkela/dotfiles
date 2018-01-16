@@ -49,17 +49,19 @@
   ignore_errors: yes
   when: not mas_result.skipped|default(false) and "{{ item }}" not in mas_result.stdout
   with_items:
+    # commented out apps are not free and cannot be installed automatically
+    # you have to install them yourself.
     - 506189836 # Harvest
-    - 413965349 # Soulver
-    - 587512244 # Kaleidoscope
+    #- 413965349 # Soulver
+    #- 587512244 # Kaleidoscope
     - 603117688 # CCMenu
-    - 775737590 # iA Writer
-    - 411643860 # DaisyDisk
+    #- 775737590 # iA Writer
+    #- 411643860 # DaisyDisk
     - 497799835 # Xcode
-    - 924726344 # Deliveries
-    - 975937182 # Fantastical 2
-    - 407963104 # Pixelmator
-    - 557168941 # Tweetbot
+    #- 924726344 # Deliveries
+    #- 975937182 # Fantastical 2
+    #- 407963104 # Pixelmator
+    #- 557168941 # Tweetbot
     - 409183694 # Keynote
     - 409201541 # Pages
     - 409203825 # Numbers
