@@ -15,7 +15,7 @@
   with_items:
     # for maven
     - java
-    - adoptopenjdk8
+    - adoptopenjdk11
 
 - name: install brews
   homebrew: name={{ item }} state=present
